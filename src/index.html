@@ -15,13 +15,18 @@
 <div class="container">
 
     <form class="form" id="login">
+        <h1 class="Titel">SoLa</h1>
         <h2 class="FormTitle">Login</h2>
         <div class="FormInputGroup">
             <input type="text" class="FormInput" id="username" placeholder="Username" required>
             <input type="password" class="FormInput" id="password" placeholder="Password" required>
         <button class="FormButton" id="LoginButton" type=submit>Login</button>
-        <button class="FormButton" id="CancelButton" type=submit>Cancel</button>
+        <button class="FormButton" id="CancelButtonLogin" type=submit>Cancel</button>
         </div>
+    </form>
+
+    <form class="form" id="main">
+        <h2 class="FormTitle">Main</h2>
     </form>
 
     <form class="form" id="add">
@@ -30,6 +35,12 @@
 
     <form class="form" id="update/delete">
         <h2 class="FormTitle">Update/Delete</h2>
+        <div class="FormInputGroup">
+            <input type="text" class="FormInput" placeholder="ToDo Standort einfügen" required>
+            <button class="FormButton" id="UpdateButtonUpdate" type="submit">Update</button>
+            <button class="FormButton" id="DeleteButtonUpdate" type="submit">Delete</button>
+            <button class="FormButton" id="CancelButtonUpdate" type="submit">Cancel</button>
+        </div>
     </form>
 
 </div>
