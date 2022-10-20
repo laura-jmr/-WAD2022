@@ -11,20 +11,25 @@ einer Seite unter einander angezeigt
 • Eingabefeld für username (required)
 • Eingabefeld für password (required)
 • Button „Login“ und Button „Cancel“~~
+
 4. Der Main-Screen muss enthalten:
 • Willkommen-Nachricht
 • Interaktive Karte mit Markierung in Berlin
 • Links neben der Karte eine Liste von drei hart-kodierten Standortnamen
+
 ~~• Button „Add“
 • Button „Logout“~~
+
 5. Der Add-Screen muss enthalten:
 • Eingabefelder für Standorte aus Ihrer Kategorie
 • Als User-Person muss ich einen Namen und eine Adresse eingeben, damit dieser Standort mit Name
 und Markierung auf einer Karte angezeigt werden kann
 • Button „Save/Submit“ und Button „Cancel“
+
 ~~6. Der Update/Delete-Screen muss ein hart-kodierten Standort enthalten:
 • Eingabefelder sind mit hart-kodierten Werten belegt
 • Button „Update”, Button „Delete“ und Button „Cancel“~~
+
 7. Design der Webseite sollte ansprechend sein, HTML 5 und CSS müssen verwendet werden.
 
 Sprint Demo: Das Entwicklungsteam präsentiert den anderen Teams ihren Prototypen. Das Team erklärt in dieser
