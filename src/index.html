@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>WebSOLAÜ</title>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
+    <link rel="stylesheet" href="index.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script>
     <style>
         div {
             border-radius: 5px;
@@ -25,11 +31,37 @@
         </div>
     </form>
 
-    <form class="form" id="main">
-        <h2 class="FormTitle">Main</h2>
-        <button class="FormButton" id="AddButtonMain" type="submit">Add</button>
-        <button class="FormButton" id="LogoutButtonMain" type="submit">Logout</button>
-    </form>
+    <div id="main">
+        <button id="LogoutButton">Logout</button>
+        <p>Willkommen bei SoLa!</p>
+        <div class="map-box">
+            <ul class="locations">
+                <li>Novalisstraße 11</li>
+                <li>Frankfurter Allee 35</li>
+                <li>Goethestraße 8</li>
+            </ul>
+            <div class="map" id="map">
+                <script>
+                    var Berlin = [52.52, 13.40];
+                    var map = L.map('map').setView(Berlin, 10);
+
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    L.marker([52.5287, 13.3882]).addTo(map)
+                    .bindPopup('Novalisstraße 11')
+                
+                    L.marker([52.5152, 13.4614]).addTo(map)
+                    .bindPopup('Frankfurter Allee 35')
+                
+                    L.marker([52.5088, 13.3132]).addTo(map)
+                    .bindPopup('Goethestraße 8')
+                </script>
+            </div>
+        </div>
+        <button id="AddButton">Add</button>
+    </div>
 
     <form class="form" id="add">
         <h2 class="FormTitle">Add</h2>
