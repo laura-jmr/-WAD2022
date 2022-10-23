@@ -34,3 +34,12 @@ ul {
     width: 200px;
     height: 300px;
 }
+
+.form__input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__input {
+    margin: 5px 0;
+}
