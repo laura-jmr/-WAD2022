@@ -32,6 +32,7 @@
     </form>
 
     <div id="main">
+        <h2 class="FormTitle">Main</h2>
         <button id="LogoutButton">Logout</button>
         <p>Willkommen bei SoLa!</p>
         <div class="map-box">
@@ -63,9 +64,24 @@
         <button id="AddButton">Add</button>
     </div>
 
-    <form class="form" id="add">
+    <div id="add-screen">
         <h2 class="FormTitle">Add</h2>
-    </form>
+        <form class="form form--hidden" id="add">
+            <div class="form__input-group">
+                <input type="text" class="form__input" id="name" placeholder="Name*" required>
+                <input type="text" class="form__input" id="id" placeholder="Id*" required>
+                <input type="text" class="form__input" id="description" placeholder="Description*" required>
+                <input type="text" class="form__input" id="street" placeholder="Street*" required>
+                <input type="text" class="form__input" id="zip" placeholder="ZIP*" required>
+                <input type="text" class="form__input" id="city" placeholder="City*" required>
+                <input type="text" class="form__input" id="latitude" placeholder="Latitude">
+                <input type="text" class="form__input" id="longitude" placeholder="Longitude">
+                <input type="text" class="form__input" id="altitude" placeholder="Altitude">
+            </div>
+            <button class="form__button" id="save" type=submit>Save</button>
+            <button class="form__button" id="cancel">Cancel</button>
+        </form>
+    </div>
 
     <form class="form" id="update/delete">
         <h2 class="FormTitle">Update/Delete</h2>
