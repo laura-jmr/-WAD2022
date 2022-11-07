@@ -15,7 +15,7 @@
 <div class="container">
 
     <form class="form" id="login">
-        <h1 class="Titel">SoLa</h1>
+        <h1 class="Title">SoLa</h1>
         <h2 class="FormTitle">Login</h2>
         <div class="FormInputGroup">
             <input type="text" class="FormInput" id="username" placeholder="Username" required>
@@ -60,17 +60,17 @@
 
     <div id="add">
         <h2 class="FormTitle">Add</h2>
-        <form class="form form--hidden" id="add">
-            <div class="form__input-group">
-                <input type="text" class="form__input" id="name" placeholder="Name*" required>
-                <input type="text" class="form__input" id="id" placeholder="Id*" required>
-                <input type="text" class="form__input" id="description" placeholder="Description*" required>
-                <input type="text" class="form__input" id="street" placeholder="Street*" required>
-                <input type="text" class="form__input" id="zip" placeholder="ZIP*" required>
-                <input type="text" class="form__input" id="city" placeholder="City*" required>
-                <input type="text" class="form__input" id="latitude" placeholder="Latitude">
-                <input type="text" class="form__input" id="longitude" placeholder="Longitude">
-                <input type="text" class="form__input" id="altitude" placeholder="Altitude">
+        <form class="HiddenForm" id="AddScreen">
+            <div class="HiddenForm">
+                <input type="text" class="FromInput" id="name" placeholder="Name" required>
+                <input type="text" class="FromInput" id="id" placeholder="ID" required>
+                <input type="text" class="FromInput" id="description" placeholder="Description" required>
+                <input type="text" class="FromInput" id="street" placeholder="Street" required>
+                <input type="text" class="FromInput" id="zip" placeholder="ZIP" required>
+                <input type="text" class="FromInput" id="city" placeholder="City" required>
+                <input type="text" class="FromInput" id="latitude" placeholder="Latitude">
+                <input type="text" class="FromInput" id="longitude" placeholder="Longitude">
+                <input type="text" class="FromInput" id="altitude" placeholder="Altitude">
             </div>
             <button class="FormButton" id="SaveButtonAdd" type=submit>Save</button>
             <button class="FormButton" id="CancelButtonAdd">Cancel</button>
@@ -80,7 +80,9 @@
     <form class="form" id="update/delete">
         <h2 class="FormTitle">Update/Delete</h2>
         <div class="FormInputGroup">
-            <input type="text" class="FormInput" placeholder="ToDo Standort einfügen" required>
+            <input type="text" class="FormInput" value="HTW Wilheminenhof" required>
+            <input type="text" class="FormInput" value="Goethestraße 8" required>
+            <input type="text" class="FormInput" value="Frankfurter Allee 35" required>
             <button class="FormButton" id="UpdateButtonUpdate" type="submit">Update</button>
             <button class="FormButton" id="DeleteButtonUpdate" type="submit">Delete</button>
             <button class="FormButton" id="CancelButtonUpdate" type="submit">Cancel</button>
