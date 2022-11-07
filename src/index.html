@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>WebSOLAÜ</title>
-    <link
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-            href="index.css"
-    />
-    <link
-            href="https://fonts.googleapis.com/css?family=VT323"
-            rel="stylesheet"
-    />
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+          integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+            integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+            crossorigin=""></script>
+    <link rel="stylesheet" href="index.css"/>
 </head>
+<body>
 <div class="container">
 
     <form class="form" id="login">
@@ -23,20 +20,62 @@
         <div class="FormInputGroup">
             <input type="text" class="FormInput" id="username" placeholder="Username" required>
             <input type="password" class="FormInput" id="password" placeholder="Password" required>
-        <button class="FormButton" id="LoginButtonLogin" type=submit>Login</button>
-        <button class="FormButton" id="CancelButtonLogin" type=submit>Cancel</button>
+            <button class="FormButton" id="LoginButtonLogin" type=submit>Login</button>
+            <button class="FormButton" id="CancelButtonLogin" type=submit>Cancel</button>
         </div>
     </form>
 
-    <form class="form" id="main">
+    <div id="main">
         <h2 class="FormTitle">Main</h2>
-        <button class="FormButton" id="AddButtonMain" type="submit">Add</button>
-        <button class="FormButton" id="LogoutButtonMain" type="submit">Logout</button>
-    </form>
+        <button id="LogoutButton">Logout</button>
+        <p>Willkommen bei SoLa!</p>
+        <div class="map-box">
+            <ul class="locations">
+                <li>Novalisstraße 11</li>
+                <li>Frankfurter Allee 35</li>
+                <li>Goethestraße 8</li>
+            </ul>
+            <div class="map" id="map">
+                <script>
+                    var Berlin = [52.52, 13.40];
+                    var map = L.map('map').setView(Berlin, 10);
 
-    <form class="form" id="add">
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    L.marker([52.5287, 13.3882]).addTo(map)
+                        .bindPopup('Novalisstraße 11')
+
+                    L.marker([52.5152, 13.4614]).addTo(map)
+                        .bindPopup('Frankfurter Allee 35')
+
+                    L.marker([52.5088, 13.3132]).addTo(map)
+                        .bindPopup('Goethestraße 8')
+                </script>
+            </div>
+        </div>
+        <button id="AddButtonMain">Add</button>
+    </div>
+
+    <div id="add">
         <h2 class="FormTitle">Add</h2>
-    </form>
+        <form class="form form--hidden" id="add">
+            <div class="form__input-group">
+                <input type="text" class="form__input" id="name" placeholder="Name*" required>
+                <input type="text" class="form__input" id="id" placeholder="Id*" required>
+                <input type="text" class="form__input" id="description" placeholder="Description*" required>
+                <input type="text" class="form__input" id="street" placeholder="Street*" required>
+                <input type="text" class="form__input" id="zip" placeholder="ZIP*" required>
+                <input type="text" class="form__input" id="city" placeholder="City*" required>
+                <input type="text" class="form__input" id="latitude" placeholder="Latitude">
+                <input type="text" class="form__input" id="longitude" placeholder="Longitude">
+                <input type="text" class="form__input" id="altitude" placeholder="Altitude">
+            </div>
+            <button class="FormButton" id="SaveButtonAdd" type=submit>Save</button>
+            <button class="FormButton" id="CancelButtonAdd">Cancel</button>
+        </form>
+    </div>
 
     <form class="form" id="update/delete">
         <h2 class="FormTitle">Update/Delete</h2>
@@ -49,5 +88,4 @@
     </form>
 
 </div>
-<body>
-
+</body>
