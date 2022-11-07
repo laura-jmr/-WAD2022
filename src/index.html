@@ -10,73 +10,94 @@
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
     crossorigin=""></script>
     <link rel="stylesheet" href="index.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+    
 </head>
 <div class="container">
 
     <form class="form" id="login">
-        <h1 class="Titel">SoLa</h1>
-        <h2 class="FormTitle">Login</h2>
-        <div class="FormInputGroup">
-            <input type="text" class="FormInput" id="username" placeholder="Username" required>
-            <input type="password" class="FormInput" id="password" placeholder="Password" required>
-        <button class="FormButton" id="LoginButtonLogin" type=submit>Login</button>
-        <button class="FormButton" id="CancelButtonLogin" type=submit>Cancel</button>
+        <div id="loginTitleContainer">
+            <h1 class="Titel">SoLa</h1>
+            <p class="TitelSlogan">Solaranlagen im Raum Berlin-Brandenburg</p>
+        </div>
+        <div id="loginDiv">
+            <h2 class="FormTitle">Login</h2>
+            <div class="FormInputGroup">
+                <input type="text" class="FormInput" id="username" placeholder="Username" required>
+                <input type="password" class="FormInput" id="password" placeholder="Password" required>
+                <div id="loginFormButtons">
+                    <button class="FormButton" id="LoginButtonLogin" type=submit>Login</button>
+                    <button class="FormButton" id="CancelButtonLogin" type=submit>Cancel</button>
+                </div>
+            </div>
         </div>
     </form>
 
     <div id="main">
         <h2 class="FormTitle">Main</h2>
-        <button id="LogoutButton">Logout</button>
-        <p>Willkommen bei SoLa!</p>
-        <div class="map-box">
-            <ul class="locations">
-                <li>Novalisstraße 11</li>
-                <li>Frankfurter Allee 35</li>
-                <li>Goethestraße 8</li>
-            </ul>
-            <div class="map" id="map">
-                <script>
-                    var Berlin = [52.52, 13.40];
-                    var map = L.map('map').setView(Berlin, 10);
-
-                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    }).addTo(map);
-
-                    L.marker([52.5287, 13.3882]).addTo(map)
-                    .bindPopup('Novalisstraße 11')
-                
-                    L.marker([52.5152, 13.4614]).addTo(map)
-                    .bindPopup('Frankfurter Allee 35')
-                
-                    L.marker([52.5088, 13.3132]).addTo(map)
-                    .bindPopup('Goethestraße 8')
-                </script>
+        <div id="mainNavContainer">
+            <div class="mainNavBar"></div>
+            <div class="mainNavBar" >
+                <p>Willkommen bei SoLa!</p>
+            </div>
+            <div class="mainNavBar">
+                <button id="LogoutButton">Logout</button>
             </div>
         </div>
-        <button id="AddButtonMain">Add</button>
+        <div class="map-box">
+            <div class="innerMapBox">
+                <ul class="locations">
+                    <li>Novalisstraße 11</li>
+                    <li>Frankfurter Allee 35</li>
+                    <li>Goethestraße 8</li>
+                </ul>
+                <div class="map" id="map">
+                    <script>
+                        var Berlin = [52.52, 13.40];
+                        var map = L.map('map').setView(Berlin, 10);
+    
+                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(map);
+    
+                        L.marker([52.5287, 13.3882]).addTo(map)
+                        .bindPopup('Novalisstraße 11')
+                    
+                        L.marker([52.5152, 13.4614]).addTo(map)
+                        .bindPopup('Frankfurter Allee 35')
+                    
+                        L.marker([52.5088, 13.3132]).addTo(map)
+                        .bindPopup('Goethestraße 8')
+                    </script>
+                </div>
+            </div>
+            <span class="dot"></span>
+            <div class="innerMapBoxAddButtonContainer">
+                <button id="AddButtonMain">Add</button>
+            </div>
+        </div>
     </div>
 
     <div id="add">
         <h2 class="FormTitle">Add</h2>
         <form class="form form--hidden" id="add">
             <div class="form__input-group">
-                <input type="text" class="form__input" id="name" placeholder="Name*" required>
-                <input type="text" class="form__input" id="id" placeholder="Id*" required>
-                <input type="text" class="form__input" id="description" placeholder="Description*" required>
-                <input type="text" class="form__input" id="street" placeholder="Street*" required>
-                <input type="text" class="form__input" id="zip" placeholder="ZIP*" required>
-                <input type="text" class="form__input" id="city" placeholder="City*" required>
-                <input type="text" class="form__input" id="latitude" placeholder="Latitude">
-                <input type="text" class="form__input" id="longitude" placeholder="Longitude">
-                <input type="text" class="form__input" id="altitude" placeholder="Altitude">
+                <input type="text" class="FormInput" id="name" placeholder="Name*" required>
+                <input type="text" class="FormInput" id="id" placeholder="Id*" required>
+                <input type="text" class="FormInput" id="description" placeholder="Description*" required>
+                <input type="text" class="FormInput" id="street" placeholder="Street*" required>
+                <input type="text" class="FormInput" id="zip" placeholder="ZIP*" required>
+                <input type="text" class="FormInput" id="city" placeholder="City*" required>
+                <input type="text" class="FormInput" id="latitude" placeholder="Latitude">
+                <input type="text" class="FormInput" id="longitude" placeholder="Longitude">
+                <input type="text" class="FormInput" id="altitude" placeholder="Altitude">
             </div>
             <button class="FormButton" id="SaveButtonAdd" type=submit>Save</button>
             <button class="FormButton" id="CancelButtonAdd">Cancel</button>
         </form>
     </div>
 
-    <form class="form" id="update/delete">
+    <form class="form" id="update-delete">
         <h2 class="FormTitle">Update/Delete</h2>
         <div class="FormInputGroup">
             <input type="text" class="FormInput" placeholder="ToDo Standort einfügen" required>
