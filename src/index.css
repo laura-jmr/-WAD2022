@@ -215,6 +215,7 @@ button {
     transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
     user-select: none;
     -webkit-user-select: none;
+    margin-bottom: 20px;
 }
 button:active {
     color: white;
