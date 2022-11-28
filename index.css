@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2f2f2;
+    z-index: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    min-width: 425px;
+    font-family: 'Merriweather', cursive;
+    letter-spacing: 2px;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    color: white;
+    font-size: 1rem;
+}
+
+li {
+    color: rgb(250, 150, 84);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    background-color: #fff;
+    border-radius: 24px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    color: #1f2123;
+    cursor: pointer;
+    fill: currentcolor;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    max-width: 100%;
+    overflow: visible;
+    padding: 2px 24px;
+    text-align: center;
+    text-transform: none;
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-bottom: 20px;
+}
+
+button:active {
+    color: white;
+    background: #1391fd;
+    box-shadow: inset -2px -2px 3px rgba(252, 247, 247, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+.FormTitle {
+    visibility: hidden;
+}
+
+/* input fields */
+
+.FromInputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.FormInput {
+    box-sizing: border-box;
+    border-radius: 24px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    color: currentColor;
+    height: 20px;
+    margin-bottom: 20px;
+    color: #3c4043;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    border: 3px groove;
+    text-align: center;
+}
+
+.FormInputGroup {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* login screen */
+
+#login {
+    margin-bottom: 100px;
+    background: linear-gradient(-45deg, #014dbf, #d5c323, #ee7752, #e7503c);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#loginDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+#loginFormButtons {
+    padding-top: 30px;
+}
+
+/* main screen */
+
+#map {
+    height: 50vh;
+    width: 40vw;
+}
+
+.map-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px 200px 50px 200px;
+}
+
+.innerMapBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 24px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    border: 25px solid rgb(0, 0, 0);
+}
+
+.locations {
+    background-color:rgb(255, 255, 255);
+    width: 200px;
+    height: 50vh;
+    border-right: 1px solid black;
+}
+
+.Title {
+    color: white;
+    position: absolute;
+    top: 200px;
+    width: 200px;
+    left: 50vw;
+    margin-left: -100px;
+    text-align: center;
+}
+
+.TitleSlogan {
+    color: white;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 250px;
+    width: 400px;
+    left: 50vw;
+    margin-left: -200px;
+    text-align: center;
+}
+
+#main {
+    margin-bottom: 100px;
+    background: linear-gradient(-45deg,  #e73c7e, #ee7752, #d5c323,#52aaee);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+#mainNavContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainNavBar {
+    padding: 0 30px;
+}
+
+.innerMapBoxAddButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* add screen */
+
+#AddScreen {
+    margin-bottom: 100px;
+    background-color: rgb(250, 150, 84);
+    height: 100vh;
+}
+
+/* update/delete */
+
+#update-delete {
+    margin-bottom: 100px;
+    background-color: rgb(250, 150, 84);
+    height: 100vh;
+}
+
