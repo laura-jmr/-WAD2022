@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>WebSOLAÜ</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-    crossorigin=""/>
+            integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+            crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-    crossorigin=""></script>
+            integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+            crossorigin=""></script>
     <link rel="stylesheet" href="index.css"/>
     <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
     
@@ -17,8 +17,8 @@
 
     <form class="form" id="login">
         <div id="loginTitleContainer">
-            <h1 class="Titel">SoLa</h1>
-            <p class="TitelSlogan">Solaranlagen im Raum Berlin-Brandenburg</p>
+            <h1 class="Title">SoLa</h1>
+            <p class="TitleSlogan">we are SoLa your map for Solar systems in Berlin-Barndenburg</p>
         </div>
         <div id="loginDiv">
             <h2 class="FormTitle">Login</h2>
@@ -38,7 +38,7 @@
         <div id="mainNavContainer">
             <div class="mainNavBar"></div>
             <div class="mainNavBar" >
-                <p>Willkommen bei SoLa!</p>
+                <p>Welcome to Sola, enjoy!</p>
             </div>
             <div class="mainNavBar">
                 <button id="LogoutButton">Logout</button>
@@ -80,8 +80,8 @@
 
     <div id="add">
         <h2 class="FormTitle">Add</h2>
-        <form class="form form--hidden" id="add">
-            <div class="form__input-group">
+        <form class="HiddenForm" id="AddScreen">
+            <div class="FromInputGroup">
                 <input type="text" class="FormInput" id="name" placeholder="Name*" required>
                 <input type="text" class="FormInput" id="id" placeholder="Id*" required>
                 <input type="text" class="FormInput" id="description" placeholder="Description*" required>
@@ -100,7 +100,10 @@
     <form class="form" id="update-delete">
         <h2 class="FormTitle">Update/Delete</h2>
         <div class="FormInputGroup">
-            <input type="text" class="FormInput" placeholder="ToDo Standort einfügen" required>
+            <input type="text" class="FormInput" placeholder="Add new location" required>
+            <input type="text" class="FormInput" value="HTW Wilheminenhof">
+            <input type="text" class="FormInput" value="Goethestraße 8">
+            <input type="text" class="FormInput" value="Frankfurter Allee 35">
             <button class="FormButton" id="UpdateButtonUpdate" type="submit">Update</button>
             <button class="FormButton" id="DeleteButtonUpdate" type="submit">Delete</button>
             <button class="FormButton" id="CancelButtonUpdate" type="submit">Cancel</button>

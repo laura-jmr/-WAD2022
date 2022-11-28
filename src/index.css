@@ -1,3 +1,7 @@
+:root {
+    --background: rgb(250, 150, 84);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +30,7 @@ p {
 }
 
 li {
-    color: rgb(250, 150, 84);
+    color: var(--background);
     font-size: 0.8rem;
     margin-bottom: 10px;
 }
@@ -75,6 +79,7 @@ button:active {
 .FromInputGroup {
     display: flex;
     flex-direction: column;
+    width: 200px;
 }
 
 .FormInput {
@@ -167,7 +172,7 @@ button:active {
     border-right: 1px solid black;
 }
 
-.Titel {
+.Title {
     color: white;
     position: absolute;
     top: 200px;
@@ -177,7 +182,7 @@ button:active {
     text-align: center;
 }
 
-.TitelSlogan {
+.TitleSlogan {
     color: white;
     position: absolute;
     font-size: 0.8rem;
@@ -190,9 +195,7 @@ button:active {
 
 #main {
     margin-bottom: 100px;
-    background: linear-gradient(-45deg,  #e73c7e, #ee7752, #d5c323,#52aaee);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background: var(--background);
     height: 100vh;
 }
 
@@ -217,7 +220,7 @@ button:active {
 
 #add {
     margin-bottom: 100px;
-    background-color: rgb(250, 150, 84);
+    background-color:var(--background);
     height: 100vh;
 }
 
@@ -225,7 +228,7 @@ button:active {
 
 #update-delete {
     margin-bottom: 100px;
-    background-color: rgb(250, 150, 84);
+    background-color: var(--background);
     height: 100vh;
 }
 
