@@ -17,3 +17,9 @@ function check_login(){
     };
     return null;
 }
+
+window.onload = function() {
+    document.getElementById("main").style.display = "none";
+    document.getElementById("add").style.display = "none";
+    document.getElementById("update-delete").style.display = "none";
+  };
