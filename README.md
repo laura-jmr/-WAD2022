@@ -1,5 +1,7 @@
 _WAD2022 575508 & 576285_
 # 1.Ü
+
+
 1. Der Prototyp darf nur aus einer .html-Datei, der index.html, bestehen. CSS-Code kann sich in einer zusätzlichen
 Stylesheet-Datei befinden.
 2. Die index.html-Datei enthält die 4 vorgegebenen Screens: „Login“, „Main“, „Add“ und „Update/Delete“. Wenn
