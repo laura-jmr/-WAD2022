@@ -251,7 +251,8 @@ button:active {
 
 #main {
     margin-bottom: 100px;
-    background: linear-gradient(-45deg, #014dbf, #d5c323, #509b36);    height: 116vh;
+    background: linear-gradient(-45deg, rgba(1, 118, 191, 0.66), rgba(112, 161, 10, 0.67));
+    height: 116vh;
 }
 
 #mainNavContainer {

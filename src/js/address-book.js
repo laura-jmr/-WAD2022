@@ -23,10 +23,18 @@ window.adresses = [
         gps: [52.5088, 13.3132],
         name: 'Goethestraße 8',
         description: 'C',
-        street: 'C',
+        street: 'Goethestraße 8',
         zip: 'C',
         city: 'berlin'
     },
+    {
+        gps:[52.8515391, 12,4586490],
+        name:'am Umspannwerk 5',
+        description: 'viel',
+        street: 'am Umspannwerk 5',
+        zip: '16845',
+        city: 'neustadt dosse',
+    }
 ];
 window.activeMarker = [];
 
@@ -75,7 +83,7 @@ function renderAddressBook() {
         if (getCurrentRole() === 0) {
             document.getElementById('update-delete-buttons').style.display = 'none';
             document.getElementById('form-back-button').style.display = '';
-            document.getElementById('addButton').style.display = 'none';
+
         }
 
         if (getCurrentRole() === 1) {
@@ -83,6 +91,7 @@ function renderAddressBook() {
                 <button onclick="editAddressbook(${i})">Edit</button>
                 <button onclick="deleteAddressbookEntry(${i})">Delete</button>
            </div>`;
+            document.getElementById('addButton').style.display = '';
         }
 
         const aktuelleAdresse = window.adresses[i];

@@ -17,7 +17,7 @@ const login_data = {
     },
     guest: {
         name: 'guest',
-        password: "1"
+        password: "password"
     }
 }
 
@@ -73,13 +73,4 @@ function getCurrentRole() {
         return 1;
     }
     return -1;
-}
-
-/**
- * block guest from add/editing
- */
-function blockGuestFromAddEdit(){
-    if (window.currentUser === 'guest'){
-        document.getElementById('addButton').style.display = 'none'
-    }
 }
