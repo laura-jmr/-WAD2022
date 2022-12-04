@@ -117,6 +117,7 @@ const addOrEditAddress = (event) => {
     event.preventDefault();
     event.stopPropagation();
     const formData = new FormData(addOrEditForm);
+    //document.getElementById("addTitle").innerText = "Add Location";
 
     /**
      * @type {{zip: FormDataEntryValue, city: FormDataEntryValue, street: FormDataEntryValue, name: FormDataEntryValue, description: FormDataEntryValue, gps: number[]}}
@@ -162,6 +163,7 @@ function editAddressbook(id) {
             field.value = value
         }
     }
+    //document.getElementById("addTitle").innerText = "Edit Location";
     // gps are handled differently
     const latitudeInput = addOrEditForm.elements.namedItem('latitude')
     const longitudeInput = addOrEditForm.elements.namedItem('longitude')

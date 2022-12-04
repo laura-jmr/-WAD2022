@@ -8,6 +8,7 @@
 window.pages = {
     login: {
         element: document.getElementById('login'), init: function () {
+            document.getElementById('footerContainer').style.display = '';
             document.getElementById("username").value = "";
             document.getElementById("password").value = "";
             console.log('Routed to login Page')
@@ -15,6 +16,7 @@ window.pages = {
     },
     main: {
         element: document.getElementById('main'), init: function () {
+            document.getElementById('footerContainer').style.display = '';
             console.log('Routed to main Page')
             renderAddressBook();
         }
