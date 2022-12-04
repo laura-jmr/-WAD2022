@@ -8,6 +8,8 @@
 window.pages = {
     login: {
         element: document.getElementById('login'), init: function () {
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
             console.log('Routed to login Page')
         }
     },
