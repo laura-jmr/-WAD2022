@@ -34,6 +34,7 @@ loginForm.addEventListener('submit', (event) => {
     // if login is ok
     if (loginStatus) {
         window.currentUser = loginStatus;
+        document.getElementById("greetingHeader").innerHTML = window.currentUser;
         routeTo('main');
         return;
     }

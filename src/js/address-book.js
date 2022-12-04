@@ -7,7 +7,7 @@ window.adresses = [
         gps: [52.5287, 13.3882],
         name: 'Novalisstraße 11',
         description: 'A',
-        street: 'A',
+        street: 'Novalisstraße 11',
         zip: 'A',
         city: 'berlin'
     },
@@ -15,7 +15,7 @@ window.adresses = [
         gps: [52.5152, 13.4614],
         name: 'Frankfurter Allee 35',
         description: 'B',
-        street: 'B',
+        street: 'Frankfurter Allee 35',
         zip: 'B',
         city: 'berlin'
     },

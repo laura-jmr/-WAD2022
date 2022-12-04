@@ -249,6 +249,11 @@ button:active {
     text-align: center;
 }
 
+#greetingHeader {
+    font-size: 1.3rem;
+    color: white;
+}
+
 #main {
     margin-bottom: 100px;
     background: linear-gradient(-45deg, rgba(1, 118, 191, 0.66), rgba(112, 161, 10, 0.67));
