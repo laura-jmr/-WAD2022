@@ -35,6 +35,15 @@ loginForm.addEventListener('submit', (event) => {
     if (loginStatus) {
         window.currentUser = loginStatus;
         document.getElementById("greetingHeader").innerHTML = window.currentUser;
+        if(getCurrentRole() != 1) {
+            document.getElementById("AddButtonMain").style.display = "none";
+            const inputs = document.getElementById("FromInputGroup").getElementsByTagName('input');
+            console.log(inputs)
+            for (let i = 0; i < inputs.length; i++) {
+                console.log(inputs[i])
+                inputs[i].disabled = true;
+            };
+        }
         routeTo('main');
         return;
     }
