@@ -100,30 +100,31 @@
             </div>
         </div>
     </div>
-    <div id="add">
-        <!-- TODO guest input blocken -->
-        <h2 class="FormTitle">Add</h2>
-        <form class="HiddenForm" id="AddOrEditScreen">
-            <div id="FromInputGroup">
-                <input type="text" class="FormInput" name="name" id="name" placeholder="Name*" required>
-                <input type="text" class="FormInput" name="id" id="AddOrEditScreen_id" placeholder="Id*"
-                       style="display: none">
-                <input type="text" class="FormInput" name="description" id="description" placeholder="Description*"
-                       required>
-                <input type="text" class="FormInput" name="street" id="street" placeholder="Street*" required>
-                <input type="text" class="FormInput" name="zip" id="zip" placeholder="ZIP*" required>
-                <input type="text" class="FormInput" name="city" id="city" placeholder="City*" required>
-                <input type="text" class="FormInput" name="latitude" id="latitude" placeholder="Latitude">
-                <input type="text" class="FormInput" name="longitude" id="longitude" placeholder="Longitude">
-            </div>
-            <div id="update-delete-buttons">
-                <button class="FormButton" id="SaveButtonAdd" type=submit>Save</button>
-                <button class="FormButton" type="button" onclick="cancelForm()">Cancel</button>
-            </div>
-            <div id="form-back-button" style="display: none">
-                <button class="FormButton" type="button" onclick="cancelForm()">Back</button>
-            </div>
-        </form>
+    <div id="addPopUp">
+        <div id="add">
+            <h2 id="addTitle">Add Location</h2>
+            <form class="HiddenForm" id="AddOrEditScreen">
+                <div id="FromInputGroup">
+                    <input type="text" class="FormInput" name="name" id="name" placeholder="Name*" required>
+                    <input type="text" class="FormInput" name="id" id="AddOrEditScreen_id" placeholder="Id*"
+                           style="display: none">
+                    <input type="text" class="FormInput" name="description" id="description" placeholder="Description*"
+                           required>
+                    <input type="text" class="FormInput" name="street" id="street" placeholder="Street*" required>
+                    <input type="text" class="FormInput" name="zip" id="zip" placeholder="ZIP*" required>
+                    <input type="text" class="FormInput" name="city" id="city" placeholder="City*" required>
+                    <input type="text" class="FormInput" name="latitude" id="latitude" placeholder="Latitude">
+                    <input type="text" class="FormInput" name="longitude" id="longitude" placeholder="Longitude">
+                </div>
+                <div id="update-delete-buttons">
+                    <button class="FormButton" id="SaveButtonAdd" type=submit>Save</button>
+                    <button class="FormButton" type="button" onclick="cancelForm()">Cancel</button>
+                </div>
+                <div id="form-back-button" style="display: none">
+                    <button class="FormButton" type="button" onclick="cancelForm()">Back</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <script src="./js/router.js"></script>

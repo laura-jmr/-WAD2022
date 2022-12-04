@@ -20,7 +20,9 @@ window.pages = {
         }
     },
     add: {
-        element: document.getElementById('add'), init: function () {
+        element: document.getElementById('addPopUp'), init: function () {
+            document.getElementById('addPopUp').style.zIndex = 99999;
+            document.getElementById('main').style.display = '';
             console.log('Routed to Add/Edit/Overview Page')
 
         }
