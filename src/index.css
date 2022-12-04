@@ -143,6 +143,11 @@ button:active {
     padding-top: 30px;
 }
 
+#login-error-response {
+    color: red;
+    font-size: 0.5rem;
+}
+
 .footer {
     height: 20vh;
     display: flex;

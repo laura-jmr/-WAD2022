@@ -84,3 +84,8 @@ function getCurrentRole() {
     }
     return -1;
 }
+
+function cancel_login() {
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+}
