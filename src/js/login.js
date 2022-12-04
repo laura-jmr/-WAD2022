@@ -69,7 +69,8 @@ function check_login() {
 
 function logout() {
     window.currentUser = null;
-    routeTo('login')
+    //routeTo('login')
+    location.reload();
 }
 
 /**
