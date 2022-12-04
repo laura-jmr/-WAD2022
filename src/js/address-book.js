@@ -4,36 +4,44 @@
 // use for address book storage
 window.adresses = [
     {
-        gps: [52.5287, 13.3882],
+        lat: 52.5287,
+        lon: 13.3882,
         name: 'Novalisstraße 11',
         description: 'A',
-        street: 'Novalisstraße 11',
+        street: 'Novalisstraße',
+        number: '11',
         zip: 'A',
-        city: 'berlin'
+        city: 'Berlin'
     },
     {
-        gps: [52.5152, 13.4614],
+        lat: 52.5152,
+        lon: 13.4614,
         name: 'Frankfurter Allee 35',
         description: 'B',
-        street: 'Frankfurter Allee 35',
+        street: 'Frankfurter Allee',
+        number: '35',
         zip: 'B',
-        city: 'berlin'
+        city: 'Berlin'
     },
     {
-        gps: [52.5088, 13.3132],
+        lat: 52.5088, 
+        lon: 13.3132,
         name: 'Goethestraße 8',
         description: 'C',
-        street: 'Goethestraße 8',
+        street: 'Goethestraße',
+        number: '8',
         zip: 'C',
-        city: 'berlin'
+        city: 'Berlin'
     },
     {
-        gps:[52.505047, 13.351844],
+        lat: 52.505047, 
+        lon: 13.351844,
         name:'Lützowplatz 17',
         description: 'viel',
-        street: 'Lützowplatz 17',
+        street: 'Lützowplatz',
+        number: '17',
         zip: '10785',
-        city: 'berlin',
+        city: 'Berlin',
     }
 ];
 window.activeMarker = [];
@@ -59,7 +67,7 @@ function renderMarker() {
     // lege marker neu an
     for (let i = 0; i < window.adresses.length; i++) {
         const aktuelleAdresse = window.adresses[i];
-        const marker = L.marker(aktuelleAdresse.gps)
+        const marker = L.marker([aktuelleAdresse.lat, aktuelleAdresse.lon])
             .addTo(map)
             .bindPopup(aktuelleAdresse.name);
         window.activeMarker.push(marker);
@@ -117,19 +125,24 @@ const addOrEditAddress = (event) => {
     event.preventDefault();
     event.stopPropagation();
     const formData = new FormData(addOrEditForm);
+    const geo = getGeocoordinates(formData.get('street'), formData.get('number'), formData.get('zip'), formData.get('city'));
+    console.log("new geos = " + geo[0] + " " + geo[1]);
     //document.getElementById("addTitle").innerText = "Add Location";
 
     /**
-     * @type {{zip: FormDataEntryValue, city: FormDataEntryValue, street: FormDataEntryValue, name: FormDataEntryValue, description: FormDataEntryValue, gps: number[]}}
+     * @type {{zip: FormDataEntryValue, city: FormDataEntryValue, street: FormDataEntryValue, number: FormDataEntryValue, name: FormDataEntryValue, description: FormDataEntryValue, gps: number[]}}
      */
     const newAddress = {
-        gps: [
-            parseInt(formData.get('latitude').toString()),
-            parseInt(formData.get('longitude').toString())
-        ],
+        //gps: [
+        //    parseInt(formData.get('latitude').toString()),
+        //    parseInt(formData.get('longitude').toString())
+        //],
+        lat: geo[0],
+        lon: geo[1],
         name: formData.get('name'),
         description: formData.get('description'),
         street: formData.get('street'),
+        number: formData.get('number'),
         zip: formData.get('zip'),
         city: formData.get('city'),
     };
@@ -197,4 +210,31 @@ function cancelForm() {
     renderAddressBook();
     // route
     routeTo('main');
+}
+
+function getGeocoordinates(street, number, zip, city) {
+    let httpRequest = new XMLHttpRequest();
+
+    const url="https://nominatim.openstreetmap.org/search?q=" + number + "+"+ street + ",+" + zip + "+" + city + "&format=json&polygon_geojson=1&addressdetails=1";
+            
+    console.log(url)
+    httpRequest.open("GET", url, false);
+            
+    httpRequest.onerror = function() {// diese Funktion wird ausgefuehrt, wenn ein Fehler auftritt
+       console.log("Connecting to server with " + url + " failed!\n");
+    };
+    var lat = 0.0;
+    var lon = 0.0;
+    httpRequest.onload = function(e) {// diese Funktion wird ausgefuehrt, wenn die Anfrage erfolgreich war
+        let data = this.response;
+        let obj = JSON.parse(data);
+        if (this.status == 200) {
+            lat = parseFloat(obj[0].geojson.coordinates[1]);
+            lon = parseFloat(obj[0].geojson.coordinates[0]);
+        } else {     //Handhabung von nicht-200er
+            console.log ("HTTP-status code was: " + obj.status);
+        }
+    };
+    httpRequest.send();
+    return [lat, lon];
 }
