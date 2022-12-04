@@ -78,8 +78,7 @@ function renderAddressBook() {
     // clear
     adressbookContainer.innerHTML = ''
     for (let i = 0; i < window.adresses.length; i++) {
-        let updateDeleteButtons = `<div><button onclick="editAddressbook(${i})">Details</button></div>`;
-
+        let updateDeleteButtons = `<div><button style="width:20px;height:20px;" onclick="editAddressbook(${i})">Details</button></div>`;
         if (getCurrentRole() === 0) {
             document.getElementById('update-delete-buttons').style.display = 'none';
             document.getElementById('form-back-button').style.display = '';
@@ -87,13 +86,12 @@ function renderAddressBook() {
         }
 
         if (getCurrentRole() === 1) {
-            updateDeleteButtons = `<div>
-                <button onclick="editAddressbook(${i})">Edit</button>
-                <button onclick="deleteAddressbookEntry(${i})">Delete</button>
+            updateDeleteButtons = `<div style="margin-top:10px;">
+                <button style="width:20px;height:20px;" onclick="editAddressbook(${i})">Edit</button>
+                <button style="width:20px;height:20px;" onclick="deleteAddressbookEntry(${i})">Delete</button>
            </div>`;
             document.getElementById('addButton').style.display = '';
         }
-
         const aktuelleAdresse = window.adresses[i];
         adressbookContainer.innerHTML += `<li>
            <div>${aktuelleAdresse.name}</div>
