@@ -28,12 +28,12 @@ window.adresses = [
         city: 'berlin'
     },
     {
-        gps:[52.8515391, 12,4586490],
-        name:'am Umspannwerk 5',
+        gps:[52.505047, 13.351844],
+        name:'Lützowplatz 17',
         description: 'viel',
-        street: 'am Umspannwerk 5',
-        zip: '16845',
-        city: 'neustadt dosse',
+        street: 'Lützowplatz 17',
+        zip: '10785',
+        city: 'berlin',
     }
 ];
 window.activeMarker = [];
