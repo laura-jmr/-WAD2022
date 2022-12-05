@@ -86,7 +86,8 @@ function removeAllMarker() {
 
 function renderAddressBook() {
     // clear
-    adressbookContainer.innerHTML = ''
+    adressbookContainer.innerHTML = '';
+    loadLocalStorageToAddresses();
     for (let i = 0; i < window.adresses.length; i++) {
         let updateDeleteButtons = `<div><button style="width:20px;height:20px;" onclick="editAddressbook(${i})">Details</button></div>`;
         if (getCurrentRole() === 0) {
@@ -120,6 +121,7 @@ function renderAddressBook() {
 }
 
 function renderMapBox() {
+    updateLocalStorage();
     renderAddressBook();
     renderMarker();
     console.log("rendered");
@@ -128,6 +130,38 @@ function renderMapBox() {
 
 }
 
+function updateLocalStorage() {
+    localStorage.clear();
+    for (let i = 0; i < window.adresses.length; i++) {
+        let aktuelleAdresse = window.adresses[i];
+        let adresseJSON = JSON.stringify(aktuelleAdresse);
+        console.log(adresseJSON);
+        localStorage.setItem(aktuelleAdresse.lat + "," + aktuelleAdresse.lon, adresseJSON);
+    };
+}
+
+function loadLocalStorage() {
+    var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        values.push( localStorage.getItem(keys[i]) );
+    }
+
+    return values;
+}
+
+function loadLocalStorageToAddresses() {
+    window.adresses = [];
+    let loadedAdresses = loadLocalStorage();
+    for (let i = 0; i < loadedAdresses.length; i++) {
+        let loadedAdressJSON = JSON.parse(loadedAdresses[i]);
+        window.adresses.push(loadedAdressJSON);
+    };
+}
+
+loadLocalStorageToAddresses();
 renderMapBox();
 
 /**
@@ -280,8 +314,8 @@ function getGeocoordinates(street, number, zip, city) {
         let data = this.response;
         let obj = JSON.parse(data);
         if (this.status == 200) {
-            lat = parseFloat(obj[0].geojson.coordinates[1]);
-            lon = parseFloat(obj[0].geojson.coordinates[0]);
+            lat = parseFloat(obj[0].lat);
+            lon = parseFloat(obj[0].lon);
         } else {     //Handhabung von nicht-200er
             console.log ("HTTP-status code was: " + obj.status);
         }
