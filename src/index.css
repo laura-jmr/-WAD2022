@@ -316,7 +316,12 @@ button:active {
 }
 #addTitle {
     color: white;
-    
+    font-size: 0.8rem;
+}
+
+#addButtons {
+    display: flex;
+    justify-content: center;
 }
 /* update/delete */
 
@@ -338,4 +343,14 @@ button:active {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+#editTitle {
+    color: white;
+    font-size: 0.8rem;
+}
+
+#update-delete-buttons {
+    display: flex;
+    justify-content: center;
 }
