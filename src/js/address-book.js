@@ -110,13 +110,16 @@ function renderAddressBook() {
             document.getElementById('addButton').style.display = '';
         }
         const aktuelleAdresse = window.adresses[i];
+        //adressbookContainer.innerHTML += `<li>
+        //   <div>${aktuelleAdresse.name}</div>
+        //   ${updateDeleteButtons}
+        //</li>`;
+        console.log("rendering " + i);
         adressbookContainer.innerHTML += `<li>
-           <div>${aktuelleAdresse.name}</div>
-           ${updateDeleteButtons}
-       </li>`;
-       //var addressJSON = JSON.stringify(aktuelleAdresse);
-       //localStorage.setItem(aktuelleAdresse.name, addressJSON);
-    }
+            <a onClick="editAddressbook(${i})" style="cursor: pointer; cursor: hand;">${aktuelleAdresse.name}</a>
+        </li>`;
+        console.log("done");
+    };
 
 }
 
@@ -251,6 +254,7 @@ editForm.addEventListener('submit', editAddress);
  */
 
 function editAddressbook(id) {
+    console.log("editing adress id " + id);
     idFromEditForm.value = id;
     const selectedAddress = window.adresses[id];
     for (const [key, value] of Object.entries(selectedAddress)) {
@@ -272,6 +276,15 @@ function editAddressbook(id) {
         document.getElementById('form-back-button-edit').style.display = '';
         document.getElementById('update-delete-buttons').style.display ='none'
     } else {
+        //if(!document.getElementById("update-delete-buttons").innerHTML.toString().includes('deleteAddressbookEntry')) {
+        //    document.getElementById("update-delete-buttons").innerHTML += `<button id="DeleteButton" style="width:60px;" onclick="deleteAddressbookEntry(${id})">Delete</button>`;
+        //}
+        if (document.contains(document.getElementById("DeleteButton"))) {
+            document.getElementById("DeleteButton").remove();
+            document.getElementById("update-delete-buttons").innerHTML += `<button id="DeleteButton" style="width:60px;" onclick="deleteAddressbookEntry(${id})" type="button">Delete</button>`;
+        }   else {
+            document.getElementById("update-delete-buttons").innerHTML += `<button id="DeleteButton" style="width:60px;" onclick="deleteAddressbookEntry(${id}) type="button"">Delete</button>`;
+        }
         document.getElementById('update-delete-buttons').style.display = '';
         document.getElementById('form-back-button-edit').style.display = 'none';
     }
@@ -282,9 +295,11 @@ function editAddressbook(id) {
  * Delete Entry from Addressbook
  */
 function deleteAddressbookEntry(id) {
+    console.log("deleting adress id " + id);
     window.adresses.splice(id, 1);
     //renderAddressBook();
     renderMapBox();
+    routeTo('main');
 }
 
 /**
