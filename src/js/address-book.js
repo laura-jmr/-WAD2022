@@ -20,7 +20,7 @@ window.adresses = [
         description: 'B',
         street: 'Frankfurter Allee',
         number: '35',
-        zip: 'B',
+        zip: '10247',
         city: 'Berlin'
     },
     {
@@ -30,7 +30,7 @@ window.adresses = [
         description: 'C',
         street: 'Goethestraße',
         number: '8',
-        zip: 'C',
+        zip: '10623',
         city: 'Berlin'
     },
     {
