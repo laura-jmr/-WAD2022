@@ -118,7 +118,6 @@ function renderAddressBook() {
         adressbookContainer.innerHTML += `<li>
             <a onClick="editAddressbook(${i})" style="cursor: pointer; cursor: hand;">${aktuelleAdresse.name}</a>
         </li>`;
-        console.log("done");
     };
 
 }
@@ -141,6 +140,7 @@ function updateLocalStorage() {
         console.log(adresseJSON);
         localStorage.setItem(aktuelleAdresse.lat + "," + aktuelleAdresse.lon, adresseJSON);
     };
+    console.log("updated local storage");
 }
 
 function loadLocalStorage() {
@@ -203,13 +203,16 @@ const addAddress = (event) => {
     //} else { // edit
     //    window.adresses[parseInt(hasId)] = newAddress;
     //}
-    window.adresses.push(newAddress);
-
-
-    // lösche input werte
-    addForm.reset();
-    renderMapBox();
-    routeTo('main');
+    if(newAddress.lat == -1){
+        alert("Can't find location, check input!");
+    } else {
+        window.adresses.push(newAddress);
+        // lösche input werte
+        addForm.reset();
+        renderMapBox();
+        routeTo('main');
+    }
+    
 }
 
 const editAddress = (event) => {
@@ -239,11 +242,14 @@ const editAddress = (event) => {
     };
 
     //let hasId = formData.get('EditScreen_id')?.toString();
-
-    window.adresses[parseInt(idFromEditForm.value)] = newAddress;
-    console.log("edited " + parseInt(idFromEditForm.value));
-    renderMapBox();
-    routeTo('main');
+    if(newAddress.lat == -1){
+        alert("Can't find location, check input!");
+    } else {
+        window.adresses[parseInt(idFromEditForm.value)] = newAddress;
+        console.log("edited " + parseInt(idFromEditForm.value));
+        renderMapBox();
+        routeTo('main');
+    }
 }
 // bind submit
 addForm.addEventListener('submit', addAddress);
@@ -283,7 +289,7 @@ function editAddressbook(id) {
             document.getElementById("DeleteButton").remove();
             document.getElementById("update-delete-buttons").innerHTML += `<button id="DeleteButton" style="width:60px;" onclick="deleteAddressbookEntry(${id})" type="button">Delete</button>`;
         }   else {
-            document.getElementById("update-delete-buttons").innerHTML += `<button id="DeleteButton" style="width:60px;" onclick="deleteAddressbookEntry(${id}) type="button"">Delete</button>`;
+            document.getElementById("update-delete-buttons").innerHTML += `<button id="DeleteButton" style="width:60px;" onclick="deleteAddressbookEntry(${id})" type="button">Delete</button>`;
         }
         document.getElementById('update-delete-buttons').style.display = '';
         document.getElementById('form-back-button-edit').style.display = 'none';
@@ -323,8 +329,8 @@ function getGeocoordinates(street, number, zip, city) {
     httpRequest.onerror = function() {// diese Funktion wird ausgefuehrt, wenn ein Fehler auftritt
        console.log("Connecting to server with " + url + " failed!\n");
     };
-    var lat = 0.0;
-    var lon = 0.0;
+    var lat = -1.0;
+    var lon = -1.0;
     httpRequest.onload = function(e) {// diese Funktion wird ausgefuehrt, wenn die Anfrage erfolgreich war
         let data = this.response;
         let obj = JSON.parse(data);
