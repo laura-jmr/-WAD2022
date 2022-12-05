@@ -320,11 +320,22 @@ button:active {
 }
 /* update/delete */
 
-#update-delete {
-    margin-bottom: 100px;
-    background-color: var(--background);
-    height: 100vh;
+#editPopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width:20vw;
+    height:60vh;
+    margin-top: -30vh; /*set to a negative number 1/2 of your height*/
+    margin-left: -10vw; /*set to a negative number 1/2 of your width*/
+    z-index: -999;
+    background-color: rgba(1, 118, 191, 0.9);
+}
+
+#edit {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }

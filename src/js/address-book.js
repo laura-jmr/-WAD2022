@@ -10,7 +10,7 @@ window.adresses = [
         description: 'A',
         street: 'Novalisstraße',
         number: '11',
-        zip: 'A',
+        zip: '10115',
         city: 'Berlin'
     },
     {
@@ -48,11 +48,13 @@ window.activeMarker = [];
 
 /* address book */
 const adressbookContainer = document.getElementById('map-address-list');
-/* editForm */
-const addOrEditForm = document.getElementById("AddOrEditScreen");
+/* addForm and editForm */
+const addForm = document.getElementById("AddScreen");
+const editForm = document.getElementById("EditScreen");
 
-const idFromForm = document.getElementById('AddOrEditScreen_id');
-/* Leaflat */
+const idFromAddForm = document.getElementById('AddScreen_id');
+const idFromEditForm = document.getElementById('EditScreen_id');
+/* Leaflet */
 const mapContainer = document.getElementById('map');
 const Berlin = [52.52, 13.40];
 const map = L.map(mapContainer).setView(Berlin, 10);
@@ -88,9 +90,15 @@ function renderAddressBook() {
     for (let i = 0; i < window.adresses.length; i++) {
         let updateDeleteButtons = `<div><button style="width:20px;height:20px;" onclick="editAddressbook(${i})">Details</button></div>`;
         if (getCurrentRole() === 0) {
-            document.getElementById('update-delete-buttons').style.display = 'none';
-            document.getElementById('form-back-button').style.display = '';
-
+            document.getElementById('addButtons').style.display = 'none';
+            document.getElementById('form-back-button-edit').style.display = '';
+            var inputs = document.getElementById("EditFromInputGroup").getElementsByTagName('input');
+            console.log(inputs)
+            for (let i = 0; i < inputs.length; i++) {
+                console.log(inputs[i])
+                inputs[i].disabled = true;
+            };
+            document.getElementById("SaveButtonUpdateDelete").style.display = "none";
         }
 
         if (getCurrentRole() === 1) {
@@ -104,15 +112,19 @@ function renderAddressBook() {
         adressbookContainer.innerHTML += `<li>
            <div>${aktuelleAdresse.name}</div>
            ${updateDeleteButtons}
-       </li>`
+       </li>`;
+       //var addressJSON = JSON.stringify(aktuelleAdresse);
+       //localStorage.setItem(aktuelleAdresse.name, addressJSON);
     }
+
 }
 
 function renderMapBox() {
     renderAddressBook();
     renderMarker();
+    console.log("rendered");
     // remove all input values from form
-    addOrEditForm.reset();
+    addForm.reset();
 
 }
 
@@ -121,10 +133,10 @@ renderMapBox();
 /**
  * add Address
  */
-const addOrEditAddress = (event) => {
+const addAddress = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const formData = new FormData(addOrEditForm);
+    const formData = new FormData(addForm);
     const geo = getGeocoordinates(formData.get('street'), formData.get('number'), formData.get('zip'), formData.get('city'));
     console.log("new geos = " + geo[0] + " " + geo[1]);
     //document.getElementById("addTitle").innerText = "Add Location";
@@ -147,30 +159,68 @@ const addOrEditAddress = (event) => {
         city: formData.get('city'),
     };
 
-    let hasId = formData.get('AddOrEditScreen_id')?.toString();
+    //let hasId = formData.get('AddScreen_id')?.toString();
 
-    if (!hasId) { // new
-        window.adresses.push(newAddress);
-    } else { // edit
-        window.adresses[parseInt(hasId)] = newAddress;
-    }
+    //if (!hasId) { // new
+    //    window.adresses.push(newAddress);
+    //} else { // edit
+    //    window.adresses[parseInt(hasId)] = newAddress;
+    //}
+    window.adresses.push(newAddress);
+
+
     // lösche input werte
-    addOrEditForm.reset();
+    addForm.reset();
+    renderMapBox();
+    routeTo('main');
+}
+
+const editAddress = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const formData = new FormData(editForm);
+    const geo = getGeocoordinates(formData.get('street'), formData.get('number'), formData.get('zip'), formData.get('city'));
+    console.log("new geos = " + geo[0] + " " + geo[1]);
+    //document.getElementById("addTitle").innerText = "Add Location";
+
+    /**
+     * @type {{zip: FormDataEntryValue, city: FormDataEntryValue, street: FormDataEntryValue, number: FormDataEntryValue, name: FormDataEntryValue, description: FormDataEntryValue, gps: number[]}}
+     */
+    const newAddress = {
+        //gps: [
+        //    parseInt(formData.get('latitude').toString()),
+        //    parseInt(formData.get('longitude').toString())
+        //],
+        lat: geo[0],
+        lon: geo[1],
+        name: formData.get('name'),
+        description: formData.get('description'),
+        street: formData.get('street'),
+        number: formData.get('number'),
+        zip: formData.get('zip'),
+        city: formData.get('city'),
+    };
+
+    //let hasId = formData.get('EditScreen_id')?.toString();
+
+    window.adresses[parseInt(idFromEditForm.value)] = newAddress;
+    console.log("edited " + parseInt(idFromEditForm.value));
     renderMapBox();
     routeTo('main');
 }
 // bind submit
-addOrEditForm.addEventListener('submit', addOrEditAddress);
+addForm.addEventListener('submit', addAddress);
+editForm.addEventListener('submit', editAddress);
 
 /**
  * Edit Address
  */
 
 function editAddressbook(id) {
-    idFromForm.value = id;
+    idFromEditForm.value = id;
     const selectedAddress = window.adresses[id];
     for (const [key, value] of Object.entries(selectedAddress)) {
-        const field = addOrEditForm.elements.namedItem(key)
+        const field = editForm.elements.namedItem(key)
         // if field exist put input into it
         if (field) {
             field.value = value
@@ -178,20 +228,20 @@ function editAddressbook(id) {
     }
     //document.getElementById("addTitle").innerText = "Edit Location";
     // gps are handled differently
-    const latitudeInput = addOrEditForm.elements.namedItem('latitude')
-    const longitudeInput = addOrEditForm.elements.namedItem('longitude')
-    latitudeInput.value = selectedAddress.gps[0];
-    longitudeInput.value = selectedAddress.gps[1];
+    const latitudeInput = editForm.elements.namedItem('latitude')
+    const longitudeInput = editForm.elements.namedItem('longitude')
+    latitudeInput.value = selectedAddress.lat;
+    longitudeInput.value = selectedAddress.lon;
     /* check if user can edit */
     if (getCurrentRole() === 0) {
         document.getElementById('update-delete-buttons').style.display = 'none';
-        document.getElementById('form-back-button').style.display = '';
-        document.getElementById('addButton').style.display ='none'
+        document.getElementById('form-back-button-edit').style.display = '';
+        document.getElementById('update-delete-buttons').style.display ='none'
     } else {
         document.getElementById('update-delete-buttons').style.display = '';
-        document.getElementById('form-back-button').style.display = 'none';
+        document.getElementById('form-back-button-edit').style.display = 'none';
     }
-    routeTo('add');
+    routeTo('edit');
 }
 
 /**
@@ -199,7 +249,8 @@ function editAddressbook(id) {
  */
 function deleteAddressbookEntry(id) {
     window.adresses.splice(id, 1);
-    renderAddressBook();
+    //renderAddressBook();
+    renderMapBox();
 }
 
 /**

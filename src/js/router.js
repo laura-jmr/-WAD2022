@@ -29,6 +29,14 @@ window.pages = {
 
         }
     },
+    edit: {
+        element: document.getElementById('editPopUp'), init: function () {
+            document.getElementById('editPopUp').style.zIndex = 99999;
+            document.getElementById('main').style.display = '';
+            console.log('Routed to Add/Edit/Overview Page')
+
+        }
+    },
 };
 
 
