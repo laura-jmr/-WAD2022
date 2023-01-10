@@ -1,6 +1,0 @@
-/**
- * Startup
- */
-routeTo('login');
-
-
