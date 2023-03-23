@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+
+:root {
+    --background: rgb(250, 150, 84);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+.leaflet-container {
+    height: 500px;
+    width: 700px;
+}
+
+.Hidden {
+    display: none;
+}
+
+body {
+    background-color: #f2f2f2;
+    z-index: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    min-width: 425px;
+    font-family: 'Merriweather', cursive;
+    letter-spacing: 2px;
+    overflow: hidden;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    color: white;
+    font-size: 1rem;
+}
+
+li {
+    color: var(--background);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    background-color: #fff;
+    border-radius: 24px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    color: #1f2123;
+    cursor: pointer;
+    fill: currentcolor;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    max-width: 100%;
+    overflow: visible;
+    padding: 2px 24px;
+    text-align: center;
+    text-transform: none;
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-bottom: 20px;
+}
+
+button:active {
+    color: white;
+    background: #1391fd;
+    box-shadow: inset -2px -2px 3px rgba(252, 247, 247, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+.FormTitle {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+/* input fields */
+
+.FormInput {
+    box-sizing: border-box;
+    border-radius: 24px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    color: currentColor;
+    height: 20px;
+    margin-bottom: 20px;
+    color: #3c4043;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    border: 3px groove;
+    text-align: center;
+}
+
+.FormInputGroup {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 200px;
+}
+
+/* login screen */
+
+#login {
+    background: linear-gradient(-45deg, #014dbf, #d5c323, #ee7752, #e7503c);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+#loginForm {
+    height: 80%;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#loginDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+#loginFormButtons {
+    padding-top: 30px;
+}
+
+#login-error-response {
+    color: red;
+    font-size: 0.5rem;
+}
+
+/* footer screen */
+
+#footerContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+.footer {
+    height: 15vh;
+    display: flex;
+    background-color: rgb(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footerContactContainer {
+    margin-left: 20vw;
+    width: 200px;
+}
+
+.footerPolicyContainer {
+    width: 200px;
+    margin-top: 25px;
+    margin-right: 20vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.footerPolicyContainer a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.6rem;
+    padding-bottom: 5px;
+}
+
+.footerCopyright {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.footerCopyright p {
+    opacity: 0.6;
+    font-size: 0.6rem;
+    margin-bottom: 10px;
+}
+
+.footerH {
+    font-size: 0.8rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.footerText p {
+    font-size: 0.6rem;
+    padding-bottom: 5px;
+}
+
+/* main screen */
+
+#map {
+    height: 50vh;
+    width: 40vw;
+}
+
+.map-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 70px 200px 50px 200px;
+}
+
+.innerMapBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 24px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    border: 25px solid rgb(0, 0, 0);
+}
+
+.locations {
+    background-color:rgb(255, 255, 255);
+    width: 200px;
+    height: 50vh;
+    border-right: 1px solid black;
+}
+
+.Title {
+    color: white;
+    position: absolute;
+    top: 200px;
+    width: 200px;
+    left: 50vw;
+    margin-left: -100px;
+    text-align: center;
+}
+
+.TitleSlogan {
+    color: white;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 250px;
+    width: 400px;
+    left: 50vw;
+    margin-left: -200px;
+    text-align: center;
+}
+
+#greetingHeader {
+    font-size: 1.3rem;
+    color: white;
+}
+
+#main {
+    margin-bottom: 100px;
+    background: linear-gradient(-45deg, rgba(1, 118, 191, 0.66), rgba(112, 161, 10, 0.67));
+    height: 116vh;
+}
+
+#mainNavContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainNavBar {
+    padding: 0 30px;
+}
+
+.innerMapBoxAddButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* add screen */
+
+#addPopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width:20vw;
+    height:60vh;
+    margin-top: -30vh; /*set to a negative number 1/2 of your height*/
+    margin-left: -10vw; /*set to a negative number 1/2 of your width*/
+    z-index: 999;
+    background-color: rgba(1, 118, 191, 0.9);
+}
+
+#add {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#addTitle {
+    color: white;
+    font-size: 0.8rem;
+}
+
+#addButtons {
+    display: flex;
+    justify-content: center;
+}
+/* update/delete */
+
+#editPopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width:20vw;
+    height:60vh;
+    margin-top: -30vh; /*set to a negative number 1/2 of your height*/
+    margin-left: -10vw; /*set to a negative number 1/2 of your width*/
+    z-index: 999;
+    background-color: rgba(1, 118, 191, 0.9);
+}
+
+#edit {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#editTitle {
+    color: white;
+    font-size: 0.8rem;
+}
+
+#update-delete-buttons {
+    display: flex;
+    justify-content: center;
+}
